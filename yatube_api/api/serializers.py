@@ -83,7 +83,6 @@ class FollowSerializer(serializers.ModelSerializer):
         Проверка поля following,
         не дает в запросе POST подписаться на самого себя.
         """
-        print(self.context.get('request').data['following'])
         if self.context.get('request').user == following:
             raise serializers.ValidationError(
                 'Нельзя подписаться на самого себя.')
